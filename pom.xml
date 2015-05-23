@@ -7,6 +7,13 @@
 	<groupId>org.pi4j.jee</groupId>
 	<artifactId>parent</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<inceptionYear>2015</inceptionYear>
+	<organization>
+		<name>Greg Lanthier</name>
+		<url>http://greglanthier.ca</url>
+	</organization>
 
 	<scm>
 		<connection>scm:git:https://github.com/greglanthier/jca1.6-demo.git</connection>
@@ -85,10 +92,8 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-	<inceptionYear>2015</inceptionYear>
-	<organization>
-		<name>Greg Lanthier</name>
-		<url>http://greglanthier.ca</url>
-	</organization>
-	<packaging>pom</packaging>
+	<modules>
+		<module>org.pi4j.jee.ra</module>
+	</modules>
+
 </project>
