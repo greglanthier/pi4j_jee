@@ -43,45 +43,49 @@ import com.pi4j.io.gpio.GpioProvider;
 @RunWith( MockitoJUnitRunner.class )
 public class Pi4JResourceAdapterTest {
 
-	@Mock BootstrapContext m_bootstrapContext;
+    @Mock
+    BootstrapContext m_bootstrapContext;
 
-	@Mock MessageEndpointFactory m_endpointFactory;
+    @Mock
+    MessageEndpointFactory m_endpointFactory;
 
-	@Mock ActivationSpec m_activationSpec;
-	
-	@Mock static GpioProvider m_mockGpioProvider;
+    @Mock
+    ActivationSpec m_activationSpec;
 
-	static Pi4JResourceAdapter adapter = new Pi4JResourceAdapter();
+    @Mock
+    static GpioProvider m_mockGpioProvider;
 
-	@BeforeClass
-	public static void beforeClass() {
-		m_mockGpioProvider = Mockito.mock( GpioProvider.class );
-		GpioFactory.setDefaultProvider( m_mockGpioProvider );
-	}
-	
-	@Test
-	public void testStart() throws ResourceAdapterInternalException {
-		adapter.start( m_bootstrapContext );
-	}
+    static Pi4JResourceAdapter adapter = new Pi4JResourceAdapter( );
 
-	@Test
-	public void testStop() {
-		adapter.stop();
-	}
+    @BeforeClass
+    public static void beforeClass( ) {
+        m_mockGpioProvider = Mockito.mock( GpioProvider.class );
+        GpioFactory.setDefaultProvider( m_mockGpioProvider );
+    }
 
-	@Test
-	public void testEndpointActivation() throws ResourceException {
-		adapter.endpointActivation( m_endpointFactory, m_activationSpec );
-	}
+    @Test
+    public void testStart( ) throws ResourceAdapterInternalException {
+        adapter.start( m_bootstrapContext );
+    }
 
-	@Test
-	public void testEndpointDeactivation() {
-		adapter.endpointDeactivation(m_endpointFactory, m_activationSpec);
-	}
+    @Test
+    public void testStop( ) {
+        adapter.stop( );
+    }
 
-	@Test
-	public void testGetXAResources() throws ResourceException {
-		ActivationSpec[] specs = new ActivationSpec[] { m_activationSpec };
-		assertThat( adapter.getXAResources( specs ), is( nullValue() ) );
-	}
+    @Test
+    public void testEndpointActivation( ) throws ResourceException {
+        adapter.endpointActivation( m_endpointFactory, m_activationSpec );
+    }
+
+    @Test
+    public void testEndpointDeactivation( ) {
+        adapter.endpointDeactivation( m_endpointFactory, m_activationSpec );
+    }
+
+    @Test
+    public void testGetXAResources( ) throws ResourceException {
+        ActivationSpec[ ] specs = new ActivationSpec[] { m_activationSpec };
+        assertThat( adapter.getXAResources( specs ), is( nullValue( ) ) );
+    }
 }
