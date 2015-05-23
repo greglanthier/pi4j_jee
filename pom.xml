@@ -65,9 +65,15 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!--
+			https://jgonian.wordpress.com/2010/12/12/maven-checkstyle-and-eclipse/
+			
+			I want to do this eventually so I can enable the Checkstyle plugin in Eclipse. 
+			 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.15</version>
 				<executions>
 					<execution>
 						<id>validate</id>
