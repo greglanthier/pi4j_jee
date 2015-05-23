@@ -29,16 +29,23 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
+import com.pi4j.io.gpio.GpioController;
+import com.pi4j.io.gpio.GpioFactory;
+
 @Connector
 public class Pi4JResourceAdapter implements ResourceAdapter {
+
+	GpioController m_gpio;
 
 	@Override
 	public void start(BootstrapContext ctx)
 			throws ResourceAdapterInternalException {
+		m_gpio = GpioFactory.getInstance();
 	}
 
 	@Override
 	public void stop() {
+		m_gpio.shutdown();
 	}
 
 	@Override
