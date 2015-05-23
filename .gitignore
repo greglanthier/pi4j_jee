@@ -2,6 +2,8 @@
 .settings
 .classpath
 .project
+.pmd
+.pmdruleset.xml
 target
 _build
 

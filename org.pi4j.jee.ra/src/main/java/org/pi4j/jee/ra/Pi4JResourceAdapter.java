@@ -35,30 +35,30 @@ import com.pi4j.io.gpio.GpioFactory;
 @Connector
 public class Pi4JResourceAdapter implements ResourceAdapter {
 
-    GpioController m_gpio;
+  GpioController m_Gpio;
 
-    @Override
-    public void start( BootstrapContext ctx ) throws ResourceAdapterInternalException {
-        m_gpio = GpioFactory.getInstance( );
-    }
+  @Override
+  public void start( BootstrapContext ctx ) throws ResourceAdapterInternalException {
+    m_Gpio = GpioFactory.getInstance( );
+  }
 
-    @Override
-    public void stop( ) {
-        m_gpio.shutdown( );
-    }
+  @Override
+  public void stop( ) {
+    m_Gpio.shutdown( );
+  }
 
-    @Override
-    public void endpointActivation( MessageEndpointFactory endpointFactory, ActivationSpec spec )
-            throws ResourceException {
-    }
+  @Override
+  public void endpointActivation( MessageEndpointFactory endpointFactory, ActivationSpec spec )
+      throws ResourceException {
+  }
 
-    @Override
-    public void endpointDeactivation( MessageEndpointFactory endpointFactory, ActivationSpec spec ) {
-    }
+  @Override
+  public void endpointDeactivation( MessageEndpointFactory endpointFactory, ActivationSpec spec ) {
+  }
 
-    @Override
-    public XAResource[ ] getXAResources( ActivationSpec[ ] specs ) throws ResourceException {
-        return null;
-    }
+  @Override
+  public XAResource[ ] getXAResources( ActivationSpec[ ] specs ) throws ResourceException {
+    return null;
+  }
 
 }
