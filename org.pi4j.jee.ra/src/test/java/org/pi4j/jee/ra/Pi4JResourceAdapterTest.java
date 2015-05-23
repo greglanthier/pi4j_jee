@@ -43,17 +43,13 @@ import com.pi4j.io.gpio.GpioProvider;
 @RunWith( MockitoJUnitRunner.class )
 public class Pi4JResourceAdapterTest {
 
-    @Mock
-    BootstrapContext m_bootstrapContext;
+    @Mock BootstrapContext m_bootstrapContext;
 
-    @Mock
-    MessageEndpointFactory m_endpointFactory;
+    @Mock MessageEndpointFactory m_endpointFactory;
 
-    @Mock
-    ActivationSpec m_activationSpec;
+    @Mock ActivationSpec m_activationSpec;
 
-    @Mock
-    static GpioProvider m_mockGpioProvider;
+    @Mock static GpioProvider m_mockGpioProvider;
 
     static Pi4JResourceAdapter adapter = new Pi4JResourceAdapter( );
 
