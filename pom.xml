@@ -4,21 +4,19 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.pi4j.jee.ra</groupId>
-	<artifactId>org.pi4j.jee.ra</artifactId>
+	<groupId>org.pi4j.jee</groupId>
+	<artifactId>parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 
-	<name>org.pi4j.jee.ra</name>
-	<url>http://maven.apache.org</url>
+	<scm>
+		<connection>scm:git:https://github.com/greglanthier/jca1.6-demo.git</connection>
+		<developerConnection>scm:git:https://github.com/greglanthier/jca1.6-demo.git</developerConnection>
+		<url>https://github.com/greglanthier/jca1.6-demo.git</url>
+	</scm>
 
-	<dependencies>
-		<dependency>
-			<groupId>com.ibm.tools.target</groupId>
-			<artifactId>was-liberty</artifactId>
-			<version>LATEST</version>
-			<type>pom</type>
-			<scope>provided</scope>
-		</dependency>
-	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 
 	<build>
 		<plugins>
@@ -30,42 +28,66 @@
 					<target>1.7</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-rar-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>rar-packaging</id>
-						<goals>
-							<goal>rar</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<warnOnMissingRaXml>false</warnOnMissingRaXml>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>attach-artifacts</id>
-						<phase>package</phase>
-						<goals>
-							<goal>attach-artifact</goal>
-						</goals>
-						<configuration>
-							<artifacts>
-								<artifact>
-									<file>target/${project.build.finalName}.rar</file>
-									<type>rar</type>
-								</artifact>
-							</artifacts>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.3</version>
+				</plugin>
+				<plugin>
+					<artifactId>org.apache.maven.plugins</artifactId>
+					<groupId>maven-dependency-plugin</groupId>
+					<version>2.10</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-rar-plugin</artifactId>
+					<version>2.4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>build-helper-maven-plugin</artifactId>
+					<version>1.9.1</version>
+				</plugin>
+				<plugin>
+					<groupId>net.wasdev.wlp.maven.plugins</groupId>
+					<artifactId>liberty-maven-plugin</artifactId>
+					<version>1.1-SNAPSHOT</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
-	
+
+	<repositories>
+		<repository>
+			<id>Liberty</id>
+			<name>Liberty Repository</name>
+			<url>http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/maven/repository/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<!-- Configure Sonatype OSS Maven snapshots repository -->
+		<pluginRepository>
+			<id>sonatype-nexus-snapshots</id>
+			<name>Sonatype Nexus Snapshots</name>
+			<url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<inceptionYear>2015</inceptionYear>
+	<organization>
+		<name>Greg Lanthier</name>
+		<url>http://greglanthier.ca</url>
+	</organization>
 </project>
