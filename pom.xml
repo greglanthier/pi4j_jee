@@ -68,14 +68,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.6</version>
-				<!-- 
-				<configuration>
-					<configLocation>/checkstyle.xml</configLocation>
-					<headerLocation>/header.txt</headerLocation>
-					<suppressionsLocation>/suppressions.xml</suppressionsLocation>
-				</configuration>
-				-->
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+				<!-- <configuration> <configLocation>/checkstyle.xml</configLocation> 
+					<headerLocation>/header.txt</headerLocation> <suppressionsLocation>/suppressions.xml</suppressionsLocation> 
+					</configuration> -->
 			</plugin>
 		</plugins>
 
