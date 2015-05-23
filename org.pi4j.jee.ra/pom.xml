@@ -4,7 +4,7 @@
 
 	<parent>
 		<groupId>org.pi4j.jee</groupId>
-		<artifactId>parent</artifactId>
+		<artifactId>org.pi4j.jee.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 
