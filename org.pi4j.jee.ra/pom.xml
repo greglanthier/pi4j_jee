@@ -14,7 +14,6 @@
 	<artifactId>org.pi4j.jee.ra</artifactId>
 
 	<name>org.pi4j.jee.ra</name>
-	<url>http://maven.apache.org</url>
 
 	<dependencies>
 		<dependency>
