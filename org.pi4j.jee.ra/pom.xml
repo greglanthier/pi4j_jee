@@ -73,4 +73,5 @@
 		</plugins>
 	</build>
 	
+	<description>JCA 1.6 Resource Adapter that interacts with Pi4J.</description>
 </project>
