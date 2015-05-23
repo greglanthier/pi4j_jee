@@ -90,4 +90,5 @@
 		<name>Greg Lanthier</name>
 		<url>http://greglanthier.ca</url>
 	</organization>
+	<packaging>pom</packaging>
 </project>
