@@ -62,23 +62,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- https://jgonian.wordpress.com/2010/12/12/maven-checkstyle-and-eclipse/ 
-				I want to do this eventually so I can enable the Checkstyle plugin in Eclipse. -->
-			<plugin>
-				<artifactId>maven-checkstyle-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>validate</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>checkstyle</goal>
-						</goals>
-					</execution>
-				</executions>
-				<!-- <configuration> <configLocation>/checkstyle.xml</configLocation> 
-					<headerLocation>/header.txt</headerLocation> <suppressionsLocation>/suppressions.xml</suppressionsLocation> 
-					</configuration> -->
-			</plugin>
 
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
@@ -187,6 +170,7 @@
 
 	<modules>
 		<module>org.pi4j.jee.ra</module>
+		<module>org.pi4j.jee.build_tools</module>
 	</modules>
 
 </project>

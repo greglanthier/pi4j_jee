@@ -10,7 +10,6 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.pi4j.jee.ra</groupId>
 	<artifactId>org.pi4j.jee.ra</artifactId>
 
 	<name>org.pi4j.jee.ra</name>
@@ -87,6 +86,32 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!-- https://jgonian.wordpress.com/2010/12/12/maven-checkstyle-and-eclipse/ 
+				I want to do this eventually so I can enable the Checkstyle plugin in Eclipse. -->
+			<plugin>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>validate</id>
+						<phase>validate</phase>
+						<goals>
+							<goal>checkstyle</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<configLocation>/checkstyle.xml</configLocation>
+					<headerLocation>/LICENSE.txt</headerLocation>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>${project.groupId}</groupId>
+						<artifactId>org.pi4j.jee.build-tools</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
 		</plugins>
 	</build>
 
