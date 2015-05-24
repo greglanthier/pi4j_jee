@@ -21,7 +21,7 @@ package org.pi4j.jee.ra;
  */
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.resource.ResourceException;
@@ -29,6 +29,7 @@ import javax.resource.spi.ActivationSpec;
 import javax.resource.spi.BootstrapContext;
 import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
+import javax.transaction.xa.XAResource;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -82,6 +83,8 @@ public class Pi4JResourceAdapterTest {
   @Test
   public void testGetXaResources( ) throws ResourceException {
     ActivationSpec[ ] specs = new ActivationSpec[] { m_activationSpec };
-    assertThat( adapter.getXAResources( specs ), is( nullValue( ) ) );
+    XAResource answer[] = adapter.getXAResources( specs );
+    assertThat( answer, is( notNullValue( ) ) );
+    assertThat( answer.length, is( 0 ) );
   }
 }

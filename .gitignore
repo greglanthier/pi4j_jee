@@ -4,6 +4,7 @@
 .project
 .pmd
 .pmdruleset.xml
+.checkstyle
 target
 _build
 

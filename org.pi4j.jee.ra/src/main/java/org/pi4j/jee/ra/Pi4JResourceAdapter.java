@@ -35,7 +35,7 @@ import com.pi4j.io.gpio.GpioFactory;
 @Connector
 public class Pi4JResourceAdapter implements ResourceAdapter {
 
-  GpioController m_Gpio;
+  GpioController m_Gpio = null;
 
   @Override
   public void start( BootstrapContext ctx ) throws ResourceAdapterInternalException {
@@ -58,7 +58,7 @@ public class Pi4JResourceAdapter implements ResourceAdapter {
 
   @Override
   public XAResource[ ] getXAResources( ActivationSpec[ ] specs ) throws ResourceException {
-    return null;
+    return new XAResource[0];
   }
 
 }
