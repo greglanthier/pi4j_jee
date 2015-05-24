@@ -35,16 +35,16 @@ import com.pi4j.io.gpio.GpioFactory;
 @Connector
 public class Pi4JResourceAdapter implements ResourceAdapter {
 
-  GpioController m_Gpio;
+  GpioController m_gpio;
 
   @Override
   public void start( BootstrapContext ctx ) throws ResourceAdapterInternalException {
-    m_Gpio = GpioFactory.getInstance( );
+    m_gpio = GpioFactory.getInstance( );
   }
 
   @Override
   public void stop( ) {
-    m_Gpio.shutdown( );
+    m_gpio.shutdown( );
   }
 
   @Override
