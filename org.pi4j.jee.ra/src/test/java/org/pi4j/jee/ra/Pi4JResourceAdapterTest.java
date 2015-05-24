@@ -31,6 +31,8 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -60,13 +62,13 @@ public class Pi4JResourceAdapterTest {
     GpioFactory.setDefaultProvider( m_mockGpioProvider );
   }
 
-  @Test
-  public void testStart( ) throws ResourceAdapterInternalException {
+  @Before
+  public void setup() throws ResourceAdapterInternalException {
     adapter.start( m_bootstrapContext );
   }
 
-  @Test
-  public void testStop( ) {
+  @After
+  public void tearDown( ) {
     adapter.stop( );
   }
 
