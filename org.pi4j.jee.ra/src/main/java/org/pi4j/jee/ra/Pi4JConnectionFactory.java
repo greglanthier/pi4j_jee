@@ -28,12 +28,27 @@ import javax.resource.cci.ConnectionFactory;
 import javax.resource.cci.ConnectionSpec;
 import javax.resource.cci.RecordFactory;
 import javax.resource.cci.ResourceAdapterMetaData;
+import javax.resource.spi.ConnectionManager;
+import javax.resource.spi.ManagedConnection;
+import javax.resource.spi.ManagedConnectionFactory;
 
 public class Pi4JConnectionFactory implements ConnectionFactory {
 
   private static final long serialVersionUID = 1L;
 
   private Reference reference;
+
+  private ManagedConnectionFactory mcf;
+  private ConnectionManager connectionManager;
+
+  public Pi4JConnectionFactory( ManagedConnectionFactory _mcf ) {
+    this( _mcf, null );
+  }
+
+  public Pi4JConnectionFactory( ManagedConnectionFactory _mcf, ConnectionManager _cxManager ) {
+    this.mcf = _mcf;
+    this.connectionManager = _cxManager;
+  }
 
   @Override
   public void setReference( final Reference _reference ) {
@@ -48,7 +63,11 @@ public class Pi4JConnectionFactory implements ConnectionFactory {
   @Override
   public Connection getConnection( ) throws ResourceException {
     // TODO Auto-generated method stub
-    return null;
+    if ( null == connectionManager ) {
+      return new Pi4JConnection( );
+    }
+    ManagedConnection managedConnection = ( ManagedConnection ) connectionManager.allocateConnection( mcf, null );
+    return new Pi4JConnection( managedConnection );
   }
 
   @Override

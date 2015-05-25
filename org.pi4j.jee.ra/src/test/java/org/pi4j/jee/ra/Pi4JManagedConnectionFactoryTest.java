@@ -21,6 +21,7 @@ package org.pi4j.jee.ra;
  */
 
 import static org.hamcrest.core.IsEqual.equalTo;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
@@ -28,6 +29,7 @@ import java.io.PrintWriter;
 import java.util.Collections;
 
 import javax.resource.ResourceException;
+import javax.resource.cci.ConnectionFactory;
 import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnection;
@@ -48,7 +50,7 @@ public class Pi4JManagedConnectionFactoryTest {
   @Mock private ResourceAdapter resourceAdapter;
 
   @Mock private ConnectionManager connectionManager;
-  
+
   @Mock private ConnectionRequestInfo cxRequestInfo;
 
   private Subject subject;
@@ -64,7 +66,7 @@ public class Pi4JManagedConnectionFactoryTest {
     managedFactory.setResourceAdapter( resourceAdapter );
   }
 
-  @Test(expected = ResourceException.class )
+  @Test( expected = ResourceException.class )
   public void testSetResourceAdapterTwice( ) throws ResourceException {
     managedFactory.setResourceAdapter( resourceAdapter );
   }
@@ -76,12 +78,14 @@ public class Pi4JManagedConnectionFactoryTest {
 
   @Test
   public void testCreateConnectionFactoryConnectionManager( ) throws Exception {
-    assertThat( managedFactory.createConnectionFactory(  connectionManager ), nullValue() );
+    ConnectionFactory cf = ( ConnectionFactory ) managedFactory.createConnectionFactory( connectionManager );
+    assertThat( cf, notNullValue( ) );
   }
 
   @Test
   public void testCreateConnectionFactory( ) throws Exception {
-    assertThat( managedFactory.createConnectionFactory( ), nullValue() );
+    ConnectionFactory cf = ( ConnectionFactory ) managedFactory.createConnectionFactory( );
+    assertThat( cf, notNullValue( ) );
   }
 
   @Test

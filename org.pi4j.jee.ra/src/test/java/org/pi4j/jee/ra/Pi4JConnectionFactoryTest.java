@@ -22,6 +22,7 @@ package org.pi4j.jee.ra;
 
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsNull.nullValue;
+import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.naming.Reference;
@@ -40,9 +41,10 @@ public class Pi4JConnectionFactoryTest {
   @Mock private Reference reference;
   @InjectMocks private Pi4JConnectionFactory factory;
 
+  Pi4JManagedConnectionFactory mcf = new Pi4JManagedConnectionFactory( );
   @Before
   public void setUp( ) {
-    factory = new Pi4JConnectionFactory( );
+    factory = new Pi4JConnectionFactory( mcf );
     factory.setReference( null );
   }
 
@@ -53,7 +55,7 @@ public class Pi4JConnectionFactoryTest {
 
   @Test
   public void testGetConnection( ) throws Exception {
-    assertThat( factory.getConnection( ), is( nullValue( ) ) );
+    assertThat( factory.getConnection( ), is( notNullValue( ) ) );
   }
 
   @Test

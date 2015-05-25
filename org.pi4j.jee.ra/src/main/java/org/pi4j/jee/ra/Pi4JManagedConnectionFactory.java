@@ -53,14 +53,12 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
 
   @Override
   public Object createConnectionFactory( final ConnectionManager _cxManager ) throws ResourceException {
-    // TODO Auto-generated method stub
-    return null;
+    return new Pi4JConnectionFactory( this, _cxManager );
   }
 
   @Override
   public Object createConnectionFactory( ) throws ResourceException {
-    // TODO Auto-generated method stub
-    return null;
+    return new Pi4JConnectionFactory( this );
   }
 
   @Override

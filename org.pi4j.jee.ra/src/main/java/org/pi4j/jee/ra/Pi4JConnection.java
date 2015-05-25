@@ -26,8 +26,19 @@ import javax.resource.cci.ConnectionMetaData;
 import javax.resource.cci.Interaction;
 import javax.resource.cci.LocalTransaction;
 import javax.resource.cci.ResultSetInfo;
+import javax.resource.spi.ManagedConnection;
 
 public class Pi4JConnection implements Connection, AutoCloseable {
+
+  private ManagedConnection managedConnection = null;
+  
+  public Pi4JConnection( ) {
+    this( null );
+  }
+
+  public Pi4JConnection( ManagedConnection _managedConnection ) {
+    managedConnection = _managedConnection;
+  }
 
   @Override
   public Interaction createInteraction( ) throws ResourceException {
@@ -54,8 +65,9 @@ public class Pi4JConnection implements Connection, AutoCloseable {
 
   @Override
   public void close( ) throws ResourceException {
-    // TODO Auto-generated method stub
-
+    if ( null != managedConnection ) {
+      managedConnection.cleanup( );
+    }
   }
 
 }
