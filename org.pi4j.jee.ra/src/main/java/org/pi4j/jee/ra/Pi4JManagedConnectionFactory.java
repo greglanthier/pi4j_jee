@@ -36,7 +36,7 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
 
   private static final long serialVersionUID = 1L;
 
-  private transient ResourceAdapter resourceAdapter;
+  private transient ResourceAdapter resourceAdapter = null;
   
   @Override
   public ResourceAdapter getResourceAdapter( ) {
@@ -44,15 +44,15 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
   }
 
   @Override
-  public void setResourceAdapter( final ResourceAdapter ra ) throws ResourceException {
+  public void setResourceAdapter( final ResourceAdapter _ra ) throws ResourceException {
     if ( null != resourceAdapter ) {
       throw new ResourceException( "Resource already set" );
     }
-    resourceAdapter = ra;
+    resourceAdapter = _ra;
   }
 
   @Override
-  public Object createConnectionFactory( final ConnectionManager cxManager ) throws ResourceException {
+  public Object createConnectionFactory( final ConnectionManager _cxManager ) throws ResourceException {
     // TODO Auto-generated method stub
     return null;
   }
@@ -64,7 +64,7 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
   }
 
   @Override
-  public ManagedConnection createManagedConnection( final Subject subject, final ConnectionRequestInfo cxRequestInfo )
+  public ManagedConnection createManagedConnection( final Subject _subject, final ConnectionRequestInfo _cxRequestInfo )
       throws ResourceException {
     // TODO Auto-generated method stub
     return null;
@@ -72,14 +72,14 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
 
   @SuppressWarnings( "rawtypes" )
   @Override
-  public ManagedConnection matchManagedConnections( final Set connectionSet, final Subject subject,
-      final ConnectionRequestInfo cxRequestInfo ) throws ResourceException {
+  public ManagedConnection matchManagedConnections( final Set _connectionSet, final Subject _subject,
+      final ConnectionRequestInfo _cxRequestInfo ) throws ResourceException {
     // TODO Auto-generated method stub
     return null;
   }
 
   @Override
-  public void setLogWriter( final PrintWriter out ) throws ResourceException {
+  public void setLogWriter( final PrintWriter _out ) throws ResourceException {
     // TODO Auto-generated method stub
 
   }

@@ -38,7 +38,7 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   private GpioController gpio = null;
 
   @Override
-  public void start( final BootstrapContext ctx ) throws ResourceAdapterInternalException {
+  public void start( final BootstrapContext _ctx ) throws ResourceAdapterInternalException {
     gpio = GpioFactory.getInstance( );
   }
 
@@ -48,16 +48,16 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   }
 
   @Override
-  public void endpointActivation( final MessageEndpointFactory endpointFactory, final ActivationSpec spec )
+  public void endpointActivation( final MessageEndpointFactory _endpointFactory, final ActivationSpec _spec )
       throws ResourceException {
   }
 
   @Override
-  public void endpointDeactivation( final MessageEndpointFactory endpointFactory, final ActivationSpec spec ) {
+  public void endpointDeactivation( final MessageEndpointFactory _endpointFactory, final ActivationSpec _spec ) {
   }
 
   @Override
-  public XAResource[ ] getXAResources( final ActivationSpec[ ] specs ) throws ResourceException {
+  public XAResource[ ] getXAResources( final ActivationSpec[ ] _specs ) throws ResourceException {
     return new XAResource[ 0 ];
   }
 

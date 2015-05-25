@@ -52,7 +52,7 @@ public class Pi4JConnectionFactory implements ConnectionFactory {
   }
 
   @Override
-  public Connection getConnection( final ConnectionSpec properties ) throws ResourceException {
+  public Connection getConnection( final ConnectionSpec _properties ) throws ResourceException {
     // TODO Auto-generated method stub
     return null;
   }
