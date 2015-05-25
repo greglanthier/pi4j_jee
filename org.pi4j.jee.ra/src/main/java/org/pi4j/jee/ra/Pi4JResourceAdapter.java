@@ -58,7 +58,7 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
 
   @Override
   public XAResource[ ] getXAResources( final ActivationSpec[ ] specs ) throws ResourceException {
-    return new XAResource[0];
+    return new XAResource[ 0 ];
   }
 
 }
