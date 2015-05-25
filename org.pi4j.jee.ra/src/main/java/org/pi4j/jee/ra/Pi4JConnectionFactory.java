@@ -62,7 +62,6 @@ public class Pi4JConnectionFactory implements ConnectionFactory {
 
   @Override
   public Connection getConnection( ) throws ResourceException {
-    // TODO Auto-generated method stub
     if ( null == connectionManager ) {
       return new Pi4JConnection( );
     }

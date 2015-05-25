@@ -24,13 +24,23 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.resource.ResourceException;
+import javax.resource.spi.ConnectionManager;
+import javax.resource.spi.ManagedConnection;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.runners.MockitoJUnitRunner;
 
+@RunWith( MockitoJUnitRunner.class )
 public class Pi4JConnectionTest {
 
+  @Mock
+  private ManagedConnection managedConnection;
+  
   private Pi4JConnection connection = null;
 
   @Before
@@ -42,6 +52,13 @@ public class Pi4JConnectionTest {
   public void tearDown() throws ResourceException {
     connection.close( );
   }
+
+  @Test
+  public void testClosingAManagedConnection() throws ResourceException {
+    try ( Pi4JConnection testConnection = new Pi4JConnection( managedConnection ) ) {};
+    Mockito.verify( managedConnection ).cleanup( );
+  }
+
   @Test
   public void testCreateInteraction( ) throws ResourceException {
     assertThat( connection.createInteraction( ), nullValue( ) );

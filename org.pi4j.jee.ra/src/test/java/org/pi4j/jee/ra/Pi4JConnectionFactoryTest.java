@@ -21,8 +21,8 @@ package org.pi4j.jee.ra;
  */
 
 import static org.hamcrest.core.Is.is;
-import static org.hamcrest.core.IsNull.nullValue;
 import static org.hamcrest.core.IsNull.notNullValue;
+import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.naming.Reference;
@@ -30,7 +30,6 @@ import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionSpec;
 import javax.resource.spi.ConnectionManager;
-import javax.resource.spi.ManagedConnectionFactory;
 
 import org.junit.Before;
 import org.junit.Test;
