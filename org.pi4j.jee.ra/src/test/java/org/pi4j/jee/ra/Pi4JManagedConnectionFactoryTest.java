@@ -53,51 +53,51 @@ public class Pi4JManagedConnectionFactoryTest {
 
   private Subject subject;
 
-  private Pi4JManagedConnectionFactory factory;
+  private Pi4JManagedConnectionFactory managedFactory;
 
   @Before
   public void setUp( ) throws ResourceException {
     PrintWriter out = new PrintWriter( System.out );
     subject = new Subject( );
-    factory = new Pi4JManagedConnectionFactory( );
-    factory.setLogWriter( out );
-    factory.setResourceAdapter( resourceAdapter );
+    managedFactory = new Pi4JManagedConnectionFactory( );
+    managedFactory.setLogWriter( out );
+    managedFactory.setResourceAdapter( resourceAdapter );
   }
 
   @Test(expected = ResourceException.class )
   public void testSetResourceAdapterTwice( ) throws ResourceException {
-    factory.setResourceAdapter( resourceAdapter );
+    managedFactory.setResourceAdapter( resourceAdapter );
   }
 
   @Test
   public void testGetResourceAdapter( ) throws Exception {
-    assertThat( factory.getResourceAdapter( ), equalTo( resourceAdapter ) );
+    assertThat( managedFactory.getResourceAdapter( ), equalTo( resourceAdapter ) );
   }
 
   @Test
   public void testCreateConnectionFactoryConnectionManager( ) throws Exception {
-    assertThat( factory.createConnectionFactory(  connectionManager ), nullValue() );
+    assertThat( managedFactory.createConnectionFactory(  connectionManager ), nullValue() );
   }
 
   @Test
   public void testCreateConnectionFactory( ) throws Exception {
-    assertThat( factory.createConnectionFactory( ), nullValue() );
+    assertThat( managedFactory.createConnectionFactory( ), nullValue() );
   }
 
   @Test
   public void testCreateManagedConnection( ) throws Exception {
-    assertThat( factory.createManagedConnection( subject, cxRequestInfo ), nullValue( ) );
+    assertThat( managedFactory.createManagedConnection( subject, cxRequestInfo ), nullValue( ) );
   }
 
   @Test
   public void testMatchManagedConnections( ) throws Exception {
-    ManagedConnection mc = factory.matchManagedConnections( Collections.emptySet( ), subject, cxRequestInfo );
+    ManagedConnection mc = managedFactory.matchManagedConnections( Collections.emptySet( ), subject, cxRequestInfo );
     assertThat( mc, nullValue( ) );
   }
 
   @Test
   public void testGetLogWriter( ) throws Exception {
-    assertThat( factory.getLogWriter( ), nullValue( ) );
+    assertThat( managedFactory.getLogWriter( ), nullValue( ) );
   }
 
 }

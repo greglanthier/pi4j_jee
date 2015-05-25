@@ -33,16 +33,16 @@ public class Pi4JConnectionFactory implements ConnectionFactory {
 
   private static final long serialVersionUID = 1L;
 
-  @Override
-  public void setReference( final Reference reference ) {
-    // TODO Auto-generated method stub
+  private Reference reference;
 
+  @Override
+  public void setReference( final Reference _reference ) {
+    reference = _reference;
   }
 
   @Override
   public Reference getReference( ) throws NamingException {
-    // TODO Auto-generated method stub
-    return null;
+    return reference;
   }
 
   @Override

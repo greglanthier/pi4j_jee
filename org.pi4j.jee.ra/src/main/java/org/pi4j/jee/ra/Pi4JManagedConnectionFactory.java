@@ -36,7 +36,7 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
 
   private static final long serialVersionUID = 1L;
 
-  private ResourceAdapter resourceAdapter;
+  private transient ResourceAdapter resourceAdapter;
   
   @Override
   public ResourceAdapter getResourceAdapter( ) {
