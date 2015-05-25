@@ -26,7 +26,11 @@ import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.naming.Reference;
+import javax.resource.ResourceException;
+import javax.resource.cci.Connection;
 import javax.resource.cci.ConnectionSpec;
+import javax.resource.spi.ConnectionManager;
+import javax.resource.spi.ManagedConnectionFactory;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,16 +42,29 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 @RunWith( MockitoJUnitRunner.class )
 public class Pi4JConnectionFactoryTest {
+
   @Mock private Reference reference;
+
+  @Mock private ConnectionManager connectionManager;
+
   @InjectMocks private Pi4JConnectionFactory factory;
 
   Pi4JManagedConnectionFactory mcf = new Pi4JManagedConnectionFactory( );
+
   @Before
   public void setUp( ) {
-    factory = new Pi4JConnectionFactory( mcf );
+    factory = new Pi4JConnectionFactory( mcf, connectionManager );
     factory.setReference( null );
   }
 
+  @Test
+  public void testGetConnectionNoConnectionManager() throws ResourceException {
+    Pi4JConnectionFactory testFactory = new Pi4JConnectionFactory( mcf );
+    Connection c = testFactory.getConnection( );
+    assertThat( c, is( notNullValue( ) ) );
+    c.close( );
+  }
+  
   @Test
   public void testGetReference( ) throws Exception {
     assertThat( factory.getReference( ), is( nullValue( ) ) );
@@ -55,7 +72,9 @@ public class Pi4JConnectionFactoryTest {
 
   @Test
   public void testGetConnection( ) throws Exception {
-    assertThat( factory.getConnection( ), is( notNullValue( ) ) );
+    Connection c = factory.getConnection( ); 
+    assertThat( c, is( notNullValue( ) ) );
+    c.close( );
   }
 
   @Test
