@@ -42,7 +42,6 @@ public class Pi4JConnection implements Connection, AutoCloseable {
 
   @Override
   public Interaction createInteraction( ) throws ResourceException {
-    // TODO Auto-generated method stub
     return null;
   }
 
@@ -53,13 +52,11 @@ public class Pi4JConnection implements Connection, AutoCloseable {
 
   @Override
   public ConnectionMetaData getMetaData( ) throws ResourceException {
-    // TODO Auto-generated method stub
     return null;
   }
 
   @Override
   public ResultSetInfo getResultSetInfo( ) throws ResourceException {
-    // TODO Auto-generated method stub
     return null;
   }
 
