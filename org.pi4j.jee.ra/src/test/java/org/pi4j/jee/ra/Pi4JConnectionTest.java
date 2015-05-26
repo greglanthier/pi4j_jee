@@ -24,7 +24,6 @@ import static org.hamcrest.core.IsNull.nullValue;
 import static org.junit.Assert.assertThat;
 
 import javax.resource.ResourceException;
-import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ManagedConnection;
 
 import org.junit.After;
