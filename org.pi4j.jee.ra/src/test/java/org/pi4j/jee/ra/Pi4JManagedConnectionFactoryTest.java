@@ -90,7 +90,9 @@ public class Pi4JManagedConnectionFactoryTest {
 
   @Test
   public void testCreateManagedConnection( ) throws Exception {
-    assertThat( managedFactory.createManagedConnection( subject, cxRequestInfo ), nullValue( ) );
+    ManagedConnection connection = managedFactory.createManagedConnection( subject, cxRequestInfo ); 
+    assertThat( connection, notNullValue( ) );
+    connection.destroy( );
   }
 
   @Test

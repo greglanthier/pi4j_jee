@@ -80,7 +80,7 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
   public ManagedConnection createManagedConnection( final Subject _subject, final ConnectionRequestInfo _cxRequestInfo )
       throws ResourceException {
     // TODO Auto-generated method stub
-    return null;
+    return new Pi4JManagedConnection( );
   }
 
   @SuppressWarnings( "rawtypes" )
