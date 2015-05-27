@@ -35,7 +35,7 @@ import javax.transaction.xa.XAResource;
 
 public class Pi4JManagedConnection implements ManagedConnection {
 
-  List< ConnectionEventListener > listeners = new ArrayList< ConnectionEventListener >( );
+  List<ConnectionEventListener> listeners = new ArrayList<ConnectionEventListener>( );
 
   /*
    * Answer a connection handle. Multiple connection handles could be tied to a
