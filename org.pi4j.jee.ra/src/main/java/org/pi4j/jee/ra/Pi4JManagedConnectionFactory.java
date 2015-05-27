@@ -24,6 +24,9 @@ import java.io.PrintWriter;
 import java.util.Set;
 
 import javax.resource.ResourceException;
+import javax.resource.cci.Connection;
+import javax.resource.cci.ConnectionFactory;
+import javax.resource.spi.ConnectionDefinition;
 import javax.resource.spi.ConnectionManager;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.resource.spi.ManagedConnection;
@@ -32,6 +35,12 @@ import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterAssociation;
 import javax.security.auth.Subject;
 
+@ConnectionDefinition(
+    connectionFactory = ConnectionFactory.class,
+    connectionFactoryImpl = Pi4JConnectionFactory.class,
+    connection = Connection.class,
+    connectionImpl = Pi4JConnection.class
+    )
 public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, ResourceAdapterAssociation {
 
   private static final long serialVersionUID = 1L;
