@@ -32,18 +32,24 @@ import javax.transaction.xa.XAResource;
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Connector
 public final class Pi4JResourceAdapter implements ResourceAdapter {
 
+  private static final transient Logger LOG = LoggerFactory.getLogger(  Pi4JResourceAdapter.class );
   private GpioController gpio = null;
 
   @Override
   public void start( final BootstrapContext _ctx ) throws ResourceAdapterInternalException {
     gpio = GpioFactory.getInstance( );
+    LOG.info( "Started gpio controller: {}", gpio );
   }
 
   @Override
   public void stop( ) {
+    LOG.info( "Shutting down gpio controller: {}", gpio );
     gpio.shutdown( );
   }
 
