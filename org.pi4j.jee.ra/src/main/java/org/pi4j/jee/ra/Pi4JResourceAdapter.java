@@ -45,12 +45,12 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   @Override
   public void start( final BootstrapContext _ctx ) throws ResourceAdapterInternalException {
     gpio = GpioFactory.getInstance( );
-    LOG.info( "Started gpio controller: {}", gpio );
+    LOG.info( "{}#start( {} ) (setting gpio controller: {})", this, _ctx, gpio );
   }
 
   @Override
   public void stop( ) {
-    LOG.info( "Shutting down gpio controller: {}", gpio );
+    LOG.info( "{}#stop( ) (shutting down gpio controller: {})", this, gpio );
     gpio.shutdown( );
   }
 
