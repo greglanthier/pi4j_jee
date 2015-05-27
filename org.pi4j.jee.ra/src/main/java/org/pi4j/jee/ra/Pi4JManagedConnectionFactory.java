@@ -35,6 +35,9 @@ import javax.resource.spi.ResourceAdapter;
 import javax.resource.spi.ResourceAdapterAssociation;
 import javax.security.auth.Subject;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @ConnectionDefinition(
     connectionFactory = ConnectionFactory.class,
     connectionFactoryImpl = Pi4JConnectionFactory.class,
@@ -45,8 +48,10 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
 
   private static final long serialVersionUID = 1L;
 
+  private static final transient Logger LOG = LoggerFactory.getLogger( Pi4JManagedConnectionFactory.class );
+
   private transient ResourceAdapter resourceAdapter = null;
-  
+
   @Override
   public ResourceAdapter getResourceAdapter( ) {
     return resourceAdapter;
@@ -57,6 +62,7 @@ public class Pi4JManagedConnectionFactory implements ManagedConnectionFactory, R
     if ( null != resourceAdapter ) {
       throw new ResourceException( "Resource already set" );
     }
+    LOG.info( "{}#setResourceAdapter( {} )", this, _ra );
     resourceAdapter = _ra;
   }
 
