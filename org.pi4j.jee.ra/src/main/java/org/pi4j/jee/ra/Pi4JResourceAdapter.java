@@ -39,6 +39,7 @@ import org.slf4j.LoggerFactory;
 public final class Pi4JResourceAdapter implements ResourceAdapter {
 
   private static final transient Logger LOG = LoggerFactory.getLogger(  Pi4JResourceAdapter.class );
+
   private GpioController gpio = null;
 
   @Override
