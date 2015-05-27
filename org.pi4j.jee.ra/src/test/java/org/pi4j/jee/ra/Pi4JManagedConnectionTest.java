@@ -28,7 +28,6 @@ import java.io.PrintWriter;
 
 import javax.resource.ResourceException;
 import javax.resource.cci.Connection;
-import javax.resource.spi.ConnectionEvent;
 import javax.resource.spi.ConnectionEventListener;
 import javax.resource.spi.ConnectionRequestInfo;
 import javax.security.auth.Subject;
