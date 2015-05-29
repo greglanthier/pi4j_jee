@@ -22,12 +22,6 @@
 							<goal>create-server</goal>
 						</goals>
 					</execution>
-					<!-- <execution> <id>install-feature</id> <phase>prepare-package</phase> 
-						<goals> <goal>install-feature</goal> </goals> <configuration> <features> 
-						<acceptLicense>true</acceptLicense> <feature>jca-1.6</feature> </features> 
-						</configuration> </execution> -->
-					<!-- <execution> <id>package-server</id> <phase>package</phase> <goals> 
-						<goal>package-server</goal> </goals> </execution> -->
 				</executions>
 				<configuration>
 					<install>
