@@ -10,14 +10,14 @@
 	<artifactId>org.pi4j.jee.wlp.package</artifactId>
 	<packaging>pom</packaging>
 	<properties>
-		<findbugs.skip>true</findbugs.skip>
+		<wlp.version>8.5.5.4</wlp.version>
 	</properties>
 	<profiles>
 		<profile>
 			<id>assemble</id>
 			<activation>
 				<file>
-					<missing>${user.home}/.m2/repository/wlp-cache/org.pi4j.jee.wlp.package-0.0.1-SNAPSHOT-distribution.zip</missing>
+					<missing>${user.home}/.m2/repository/wlp-cache/wlp-developers-package-${wlp.version}-distribution.zip</missing>
 				</file>
 			</activation>
 			<build>
@@ -33,11 +33,24 @@
 									<goal>create-server</goal>
 								</goals>
 							</execution>
+							<execution>
+								<id>install-feature</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>install-feature</goal>
+								</goals>
+								<configuration>
+									<features>
+										<acceptLicense>true</acceptLicense>
+										<feature>jca-1.6</feature>
+									</features>
+								</configuration>
+							</execution>
 						</executions>
 						<configuration>
 							<install>
 								<licenseCode>L-JTHS-95XRL8</licenseCode>
-								<runtimeUrl>http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/8.5.5.4/wlp-developers-runtime-8.5.5.4.jar</runtimeUrl>
+								<runtimeUrl>http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/downloads/wlp/${wlp.version}/wlp-developers-runtime-${wlp.version}.jar</runtimeUrl>
 							</install>
 						</configuration>
 					</plugin>
@@ -46,6 +59,7 @@
 						<version>2.5.4</version>
 						<configuration>
 							<outputDirectory>${settings.localRepository}/wlp-cache</outputDirectory>
+							<finalName>wlp-developers-package-${wlp.version}</finalName>
 							<descriptors>
 								<descriptor>src/main/assembly/distribution.xml</descriptor>
 							</descriptors>
