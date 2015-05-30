@@ -69,6 +69,7 @@ public class Pi4JConnection implements Connection, AutoCloseable {
       //
       // for now I'll invoke 'cleanup' but the physical connection should
       // never do this (at least according to http://docs.oracle.com/javaee/6/api/index.html?javax/resource/spi/ResourceAdapter.html).
+
       managedConnection.cleanup( );
     }
   }
