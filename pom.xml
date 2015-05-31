@@ -156,6 +156,7 @@
 			</releases>
 		</repository>
 	</repositories>
+
 	<pluginRepositories>
 		<!-- Configure Sonatype OSS Maven snapshots repository -->
 		<pluginRepository>
