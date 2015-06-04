@@ -58,7 +58,7 @@
 						<version>2.5.4</version>
 						<configuration>
 							<outputDirectory>${settings.localRepository}/wlp-cache</outputDirectory>
-							<finalName>wlp-developers-package-${wlp.version}</finalName>
+							<finalName>wlp-developers-assembly-${wlp.version}</finalName>
 							<descriptors>
 								<descriptor>src/main/assembly/distribution.xml</descriptor>
 							</descriptors>

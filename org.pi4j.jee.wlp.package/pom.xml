@@ -1,0 +1,56 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.pi4j.jee</groupId>
+		<artifactId>org.pi4j.jee.parent</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>org.pi4j.jee.wlp.package</artifactId>
+	<packaging>pom</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.pi4j.jee.ra</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>net.wasdev.wlp.maven.plugins</groupId>
+				<artifactId>liberty-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>create-server</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>create-server</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>install-ra</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>install-apps</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>create-package</id>
+						<phase>package</phase>
+						<goals>
+							<goal>package-server</goal>
+						</goals>
+						<configuration>
+							<packageFile>${project.build.directory}/pi4j_wlp_ra.zip</packageFile>
+						</configuration>
+					</execution>
+				</executions>
+				<configuration>
+					<assemblyArchive>${settings.localRepository}/wlp-cache/wlp-developers-assembly-8.5.5.4-distribution.zip</assemblyArchive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
