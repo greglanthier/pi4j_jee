@@ -6,8 +6,7 @@
 		<artifactId>org.pi4j.jee.parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<groupId>org.pi4j.jee.wlp.package</groupId>
-	<artifactId>org.pi4j.jee.wlp.package</artifactId>
+	<artifactId>org.pi4j.jee.wlp.assembly</artifactId>
 	<packaging>pom</packaging>
 	<properties>
 		<wlp.version>8.5.5.4</wlp.version>
@@ -17,7 +16,7 @@
 			<id>assemble</id>
 			<activation>
 				<file>
-					<missing>${user.home}/.m2/repository/wlp-cache/wlp-developers-package-${wlp.version}-distribution.zip</missing>
+					<missing>${user.home}/.m2/repository/wlp-cache/wlp-developers-assembly-${wlp.version}-distribution.zip</missing>
 				</file>
 			</activation>
 			<build>
