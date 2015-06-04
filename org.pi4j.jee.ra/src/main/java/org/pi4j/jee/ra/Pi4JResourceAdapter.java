@@ -31,6 +31,11 @@ import javax.transaction.xa.XAResource;
 
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
+import com.pi4j.io.gpio.GpioPinDigitalInput;
+import com.pi4j.io.gpio.PinPullResistance;
+import com.pi4j.io.gpio.RaspiPin;
+import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
+import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,19 +43,36 @@ import org.slf4j.LoggerFactory;
 @Connector
 public final class Pi4JResourceAdapter implements ResourceAdapter {
 
-  private static final transient Logger LOG = LoggerFactory.getLogger(  Pi4JResourceAdapter.class );
+  private static final transient Logger LOG = LoggerFactory.getLogger( Pi4JResourceAdapter.class );
 
   private GpioController gpio = null;
+
+  private GpioPinDigitalInput myButton = null;
 
   @Override
   public void start( final BootstrapContext _ctx ) throws ResourceAdapterInternalException {
     gpio = GpioFactory.getInstance( );
     LOG.info( "{}#start( {} ) (setting gpio controller: {})", this, _ctx, gpio );
+
+    // http://pi4j.com/example/listener.html
+    //
+    myButton = gpio.provisionDigitalInputPin( RaspiPin.GPIO_02, PinPullResistance.PULL_DOWN );
+
+    myButton.addListener( new GpioPinListenerDigital( ) {
+      @Override
+      public void handleGpioPinDigitalStateChangeEvent( GpioPinDigitalStateChangeEvent _event ) {
+        LOG.info( " --> GPIO PIN STATE CHANGE: {} = {}", _event.getPin( ), _event.getState( ) );
+      }
+
+    } );
+
+    LOG.info( "Added button listener" );
   }
 
   @Override
   public void stop( ) {
     LOG.info( "{}#stop( ) (shutting down gpio controller: {})", this, gpio );
+    gpio.removeAllListeners( );
     gpio.shutdown( );
   }
 

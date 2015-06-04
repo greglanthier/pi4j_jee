@@ -34,6 +34,7 @@ import javax.transaction.xa.XAResource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -77,12 +78,12 @@ public class Pi4JResourceAdapterTest {
     adapter.endpointActivation( m_endpointFactory, m_activationSpec );
   }
 
-  @Test
+  @Test @Ignore
   public void testEndpointDeactivation( ) {
     adapter.endpointDeactivation( m_endpointFactory, m_activationSpec );
   }
 
-  @Test
+  @Test @Ignore
   public void testGetXaResources( ) throws ResourceException {
     ActivationSpec[ ] specs = new ActivationSpec[] { m_activationSpec };
     XAResource answer[] = adapter.getXAResources( specs );
