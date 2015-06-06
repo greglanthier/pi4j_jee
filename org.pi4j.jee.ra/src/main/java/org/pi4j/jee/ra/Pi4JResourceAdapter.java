@@ -29,6 +29,9 @@ import javax.resource.spi.ResourceAdapterInternalException;
 import javax.resource.spi.endpoint.MessageEndpointFactory;
 import javax.transaction.xa.XAResource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.pi4j.io.gpio.GpioController;
 import com.pi4j.io.gpio.GpioFactory;
 import com.pi4j.io.gpio.GpioPinDigitalInput;
@@ -36,10 +39,6 @@ import com.pi4j.io.gpio.PinPullResistance;
 import com.pi4j.io.gpio.RaspiPin;
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
 import com.pi4j.io.gpio.event.GpioPinListenerDigital;
-
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 @Connector
 public final class Pi4JResourceAdapter implements ResourceAdapter {
@@ -68,6 +67,25 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
     } );
 
     LOG.info( "Added button listener" );
+    
+//    try {
+//      _ctx.getWorkManager( ).startWork( new Work( ) {
+//        
+//        @Override
+//        public void run( ) {
+//          // TODO Auto-generated method stub
+//        }
+//        
+//        @Override
+//        public void release( ) {
+//          // TODO Auto-generated method stub
+//          
+//        }
+//      } );
+//    } catch ( WorkException e ) {
+//      // TODO Auto-generated catch block
+//      e.printStackTrace();
+//    }
   }
 
   @Override
