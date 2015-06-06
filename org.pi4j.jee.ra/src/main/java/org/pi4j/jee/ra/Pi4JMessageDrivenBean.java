@@ -20,6 +20,7 @@ package org.pi4j.jee.ra;
  * #L%
  */
 
+import javax.ejb.ActivationConfigProperty;
 import javax.ejb.MessageDriven;
 
 import com.pi4j.io.gpio.event.GpioPinDigitalStateChangeEvent;
@@ -29,7 +30,10 @@ import org.slf4j.LoggerFactory;
 
 @MessageDriven(
     name = "Pi4JMessageDrivenBean",
-    messageListenerInterface = Pi4JGpioListener.class
+    messageListenerInterface = Pi4JGpioListener.class,
+    activationConfig = { 
+      @ActivationConfigProperty ( propertyName = "pin", propertyValue = "x" )
+      }
     )
 public class Pi4JMessageDrivenBean implements Pi4JGpioListener {
 

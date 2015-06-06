@@ -27,15 +27,13 @@
         <feature>jndi-1.0</feature>
     </featureManager>
 
-    <logging consoleLogLevel="INFO"/>
+    <logging consoleLogLevel="INFO" />
 
-	<activationSpec id="org.pi4j.jee.ra-0.0.1-SNAPSHOT/Pi4JMessageDrivenBean" >
-		<properties.wasJms destinationRef="jndi/MDBQ" />
-	</activationSpec>
+    <resourceAdapter location="pi4jra.rar" id="pi4jra" />
 
-	<jmsQueue id="jndi/MDBQ" jndiName="jndi/MDBQ">
-    	<properties.wasJms queueName="Q1"/>
-	</jmsQueue>
+    <activationSpec id="pi4jra/pi4jra/Pi4JMessageDrivenBean" >
+        <properties.pi4jra.Pi4JGpioActivationSpec  pin="y" />
+    </activationSpec>
 
     <!--
     <httpEndpoint id="defaultHttpEndpoint"
