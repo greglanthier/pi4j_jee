@@ -20,19 +20,44 @@ package org.pi4j.jee.ra;
  * #L%
  */
 
+import java.io.Serializable;
+
 import javax.resource.ResourceException;
+import javax.resource.spi.Activation;
 import javax.resource.spi.ActivationSpec;
+import javax.resource.spi.ConfigProperty;
 import javax.resource.spi.InvalidPropertyException;
 import javax.resource.spi.ResourceAdapter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Pi4JGpioActivationSpec implements ActivationSpec {
+@Activation(
+    messageListeners = {Pi4JGpioListener.class}
+    )
+public class Pi4JGpioActivationSpec implements ActivationSpec, Serializable {
+
+  private static final long serialVersionUID = 1L;
 
   private static transient Logger LOG = LoggerFactory.getLogger( Pi4JGpioActivationSpec.class );
 
   private ResourceAdapter resourceAdapter;
+
+  @ConfigProperty( defaultValue = "x" )
+  private String pinName = "";
+
+  public Pi4JGpioActivationSpec( ) {
+    LOG.info( "PIN: " + getPinName( ) );
+  }
+
+  public String getPinName() {
+    return pinName;
+  }
+
+  public void setPinName( final String _name ) {
+    LOG.info( "SET NAME {} ", _name );
+    pinName = _name;
+  }
 
   @Override
   public ResourceAdapter getResourceAdapter( ) {

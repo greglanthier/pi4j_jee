@@ -15,6 +15,13 @@
 	<name>org.pi4j.jee.ra</name>
 
 	<dependencies>
+
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.pi4j.jee.api</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.ibm.tools.target</groupId>
 			<artifactId>was-liberty</artifactId>

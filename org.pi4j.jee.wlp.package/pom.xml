@@ -14,6 +14,13 @@
 			<groupId>${project.groupId}</groupId>
 			<artifactId>org.pi4j.jee.ra</artifactId>
 			<version>${project.version}</version>
+			<type>rar</type>
+		</dependency>
+		<dependency>
+			<groupId>${project.groupId}</groupId>
+			<artifactId>org.pi4j.jee.war</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
 		</dependency>
 	</dependencies>
 	<build>

@@ -23,23 +23,25 @@
     <featureManager>
         <feature>jsp-2.2</feature>
         <feature>jca-1.6</feature>
-        <feature>ejbLite-3.1</feature>
+        <feature>mdb-3.1</feature>
         <feature>jndi-1.0</feature>
     </featureManager>
 
     <logging consoleLogLevel="INFO" />
 
-    <resourceAdapter location="pi4jra.rar" id="pi4jra" />
+    <resourceAdapter location="pi4jra.rar" />
 
-    <activationSpec id="pi4jra/pi4jra/Pi4JMessageDrivenBean" >
-        <properties.pi4jra.Pi4JGpioActivationSpec  pin="y" />
+    <application location="pi4jwar.war" type="war" autoStart="true"/>
+	
+    <webContainer deferServletLoad="false"/>
+
+    <activationSpec id="pi4jwar/Pi4JMessageDrivenBean" >
+        <properties.pi4jra pinName="ss"  />
     </activationSpec>
 
-    <!--
     <httpEndpoint id="defaultHttpEndpoint"
                   host="*"
                   httpPort="9080"
                   httpsPort="9443" />
-    -->
 
 </server>

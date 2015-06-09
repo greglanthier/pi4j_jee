@@ -177,6 +177,8 @@
 		<module>org.pi4j.jee.build_tools</module>
 		<module>org.pi4j.jee.wlp.assembly</module>
 		<module>org.pi4j.jee.wlp.package</module>
+		<module>org.pi4j.jee.war</module>
+		<module>org.pi4j.jee.api</module>
 	</modules>
 
 </project>
