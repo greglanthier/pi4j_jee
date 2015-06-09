@@ -93,11 +93,12 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   @Override
   public void endpointActivation( final MessageEndpointFactory _endpointFactory, final ActivationSpec _spec )
       throws ResourceException {
-    LOG.info( "{}#endpointActivation( ..., {}  )", this, _spec );
+    LOG.info( "{}#endpointActivation( {}, {}  )", this, _endpointFactory, _spec );
   }
 
   @Override
   public void endpointDeactivation( final MessageEndpointFactory _endpointFactory, final ActivationSpec _spec ) {
+    LOG.info( "{}#endpointDeactivation( {}, {}  )", this, _endpointFactory, _spec );
   }
 
   @Override
