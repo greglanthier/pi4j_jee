@@ -36,7 +36,7 @@
     <webContainer deferServletLoad="false"/>
 
     <activationSpec id="pi4jwar/Pi4JMessageDrivenBean" >
-        <properties.pi4jra pinName="ss"  />
+        <properties.pi4jra pinName="PIN 1"  />
     </activationSpec>
 
     <httpEndpoint id="defaultHttpEndpoint"

@@ -46,10 +46,6 @@ public class Pi4JGpioActivationSpec implements ActivationSpec, Serializable {
   @ConfigProperty( defaultValue = "x" )
   private String pinName = "";
 
-  public Pi4JGpioActivationSpec( ) {
-    LOG.info( "PIN: " + getPinName( ) );
-  }
-
   public String getPinName() {
     return pinName;
   }
