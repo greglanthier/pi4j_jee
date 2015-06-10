@@ -24,6 +24,13 @@
 		</dependency>
 	</dependencies>
 	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh</artifactId>
+				<version>2.9</version>
+			</extension>
+		</extensions>
 		<plugins>
 			<plugin>
 				<groupId>net.wasdev.wlp.maven.plugins</groupId>
@@ -61,4 +68,31 @@
 			</plugin>
 		</plugins>
 	</build>
+	<profiles>
+		<profile>
+			<id>pibuild</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>wagon-maven-plugin</artifactId>
+						<version>1.0-beta-3</version>
+						<configuration>
+							<fromFile>${project.build.directory}/pi4j_wlp_ra.zip</fromFile>
+							<url>scp://pi@raspberrypi.local/home/pi/temp</url>
+						</configuration>
+						<executions>
+							<execution>
+								<id>upload-war-to-server</id>
+								<phase>package</phase>
+								<goals>
+									<goal>upload-single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 </project>
