@@ -41,7 +41,7 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   private static final transient Logger LOG = LoggerFactory.getLogger( Pi4JResourceAdapter.class );
 
 //  private GpioController gpio = null;
-//
+
 //  private GpioPinDigitalInput myButton = null;
 
   @Override
@@ -94,6 +94,8 @@ public final class Pi4JResourceAdapter implements ResourceAdapter {
   public void endpointActivation( final MessageEndpointFactory _endpointFactory, final ActivationSpec _spec )
       throws ResourceException {
     LOG.info( "{}#endpointActivation( {}, {}  )", this, _endpointFactory, _spec );
+    
+    // for each pin in _spec
   }
 
   @Override

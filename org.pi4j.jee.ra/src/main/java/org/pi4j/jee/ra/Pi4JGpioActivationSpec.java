@@ -29,6 +29,8 @@ import javax.resource.spi.ConfigProperty;
 import javax.resource.spi.InvalidPropertyException;
 import javax.resource.spi.ResourceAdapter;
 
+import com.pi4j.io.gpio.RaspiPin;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,7 +45,7 @@ public class Pi4JGpioActivationSpec implements ActivationSpec, Serializable {
 
   private ResourceAdapter resourceAdapter;
 
-  @ConfigProperty( defaultValue = "x" )
+  @ConfigProperty( defaultValue = "GPIO 2" )
   private String pinName = "";
 
   public String getPinName() {
@@ -53,6 +55,9 @@ public class Pi4JGpioActivationSpec implements ActivationSpec, Serializable {
   public void setPinName( final String _name ) {
     LOG.info( "SET NAME {} ", _name );
     pinName = _name;
+    if ( null != RaspiPin.getPinByName( _name ) ) {
+      LOG.info( "found raspi pin {}", RaspiPin.getPinByName( _name ) );  
+    }
   }
 
   @Override
